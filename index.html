@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine for 柯雅琇 ❤️</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 20px;
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+#yesBtn {
+    background-color: #28a745;
+    color: white;
+}
+
+#noBtn {
+    background-color: #dc3545;
+    color: white;
+    position: absolute;
+}
+
+iframe {
+    margin-top: 20px;
+    border-radius: 12px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Will you be my Valentine 柯雅琇? ❤️</h1>
+
+    <button id="yesBtn" onclick="accept()">Yes ❤️</button>
+    <button id="noBtn">No 💔</button>
+
+    <!-- Spotify Player -->
+    <iframe style="border-radius:12px"
+        src="https://open.spotify.com/embed/track/4dCiUhxJRGOdaR4Z4DP8nR?utm_source=generator&autoplay=1"
+        width="300"
+        height="80"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+function moveButton() {
+
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
+
+function accept() {
+    document.body.innerHTML = `
+    <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        font-size:40px;
+        color:white;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        text-align:center;
+        flex-direction:column;
+    ">
+        ❤️ 柯雅琇 said YES! ❤️<br><br>
+        再見!我的愛人 🎵
+    </div>
+    `;
+
+    // autoplay music after YES click
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://open.spotify.com/embed/track/4dCiUhxJRGOdaR4Z4DP8nR?autoplay=1";
+    iframe.width = "0";
+    iframe.height = "0";
+    iframe.allow = "autoplay";
+    document.body.appendChild(iframe);
+}
+</script>
+
+</body>
+</html>
